@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\IsEmptyToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullToValueConverter.cs" />
     <Compile Include="Converters\PinIconConverter.cs" />
     <Compile Include="Converters\PinTooltipConverter.cs" />
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
@@ -76,9 +77,13 @@
     <Compile Include="TabbedRulesheetView.xaml.cs">
       <DependentUpon>TabbedRulesheetView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddEditSpecCodeDialgoViewModel.cs" />
     <Compile Include="ViewModels\RulesheetDetailTabViewModel.cs" />
     <Compile Include="ViewModels\RulesheetViewModel.cs" />
     <Compile Include="ViewModels\TabbedRulesheetViewModel.cs" />
+    <Compile Include="Views\AddEditSpecCodeDialogView.xaml.cs">
+      <DependentUpon>AddEditSpecCodeDialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RulesheetDetailTabView.xaml.cs">
       <DependentUpon>RulesheetDetailTabView.xaml</DependentUpon>
     </Compile>
@@ -99,6 +104,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TabbedRulesheetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddEditSpecCodeDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

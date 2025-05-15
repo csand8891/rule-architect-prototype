@@ -1,4 +1,3 @@
-
 namespace RuleArchitectPrototype.Models
 {
     public class SoftwareOptionSpecificationCode : BaseModel
@@ -10,7 +9,14 @@ namespace RuleArchitectPrototype.Models
             set => SetField(ref _softwareOptionSpecificationCodeId, value);
         }
 
-        // SoftwareOptionId is implicit
+        // --- ADD THIS PROPERTY ---
+        private int _softwareOptionId; // Foreign Key to SoftwareOption
+        public int SoftwareOptionId
+        {
+            get => _softwareOptionId;
+            set => SetField(ref _softwareOptionId, value);
+        }
+        // --- END ADDED PROPERTY ---
 
         private int _specCodeDefinitionId; // FK
         public int SpecCodeDefinitionId
@@ -32,14 +38,13 @@ namespace RuleArchitectPrototype.Models
             get => _softwareOptionActivationRuleId;
             set => SetField(ref _softwareOptionActivationRuleId, value);
         }
-        
+
         private SoftwareOptionActivationRule _activationRule; // The actual linked rule object
-        public SoftwareOptionActivationRule ActivationRule 
+        public SoftwareOptionActivationRule ActivationRule
         {
             get => _activationRule;
             set => SetField(ref _activationRule, value);
         }
-
 
         private string _specificInterpretation;
         public string SpecificInterpretation

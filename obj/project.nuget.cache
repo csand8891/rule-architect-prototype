@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vobNdd/YHSE=",
+  "dgSpecHash": "5mPyYzVhR2Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj",
+  "projectFilePath": "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\corey\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
     "C:\\Users\\corey\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",

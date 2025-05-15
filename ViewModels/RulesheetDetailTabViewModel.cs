@@ -1,77 +1,153 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel; // Required for PropertyChangedEventArgs for manual IsDirty
+using System.ComponentModel;
 using System.Windows.Input;
 using RuleArchitectPrototype.Models;
 using RuleArchitectPrototype.Commands;
+using RuleArchitectPrototype.Views; // Ensure this using directive is present
 using System.Linq;
+using System.Windows;
+using materialDesign = MaterialDesignThemes.Wpf; // Alias for MaterialDesign PackIconKind
+using System.Collections.Specialized; // For INotifyCollectionChanged
 
 namespace RuleArchitectPrototype.ViewModels
 {
     public class RulesheetDetailTabViewModel : BaseModel
     {
-        private SoftwareOption _originalSoftwareOption; // Represents the state when loaded or last saved
+        private SoftwareOption _originalSoftwareOption;
         private SoftwareOption _editableSoftwareOption;
         public SoftwareOption EditableSoftwareOption
         {
             get => _editableSoftwareOption;
             set
             {
+                // Detach old event handlers
                 if (_editableSoftwareOption != null)
                 {
                     _editableSoftwareOption.PropertyChanged -= EditableSoftwareOption_PropertyChanged;
+                    if (_editableSoftwareOption.SpecificationCodes != null)
+                    {
+                        _editableSoftwareOption.SpecificationCodes.CollectionChanged -= DetailCollectionChanged;
+                        // Item PropertyChanged for SpecificationCodes might be needed if inline editing for them is added later
+                    }
+                    if (_editableSoftwareOption.ActivationRules != null)
+                    {
+                        _editableSoftwareOption.ActivationRules.CollectionChanged -= DetailCollectionChanged;
+                        foreach (var item in _editableSoftwareOption.ActivationRules) item.PropertyChanged -= DetailItemPropertyChanged;
+                    }
+                    // Detach for Requirements if they become inline editable
+                    if (_editableSoftwareOption.Requirements != null)
+                    {
+                        _editableSoftwareOption.Requirements.CollectionChanged -= DetailCollectionChanged;
+                        // foreach (var item in _editableSoftwareOption.Requirements) item.PropertyChanged -= DetailItemPropertyChanged; // If Requirement items become editable
+                    }
                 }
+
                 if (SetField(ref _editableSoftwareOption, value))
                 {
-                    IsDirty = false; // Reset dirty flag when the whole object is swapped
+                    IsDirty = false;
                     if (_editableSoftwareOption != null)
                     {
                         _editableSoftwareOption.PropertyChanged += EditableSoftwareOption_PropertyChanged;
+                        // Attach new event handlers
+                        if (_editableSoftwareOption.SpecificationCodes != null)
+                        {
+                            _editableSoftwareOption.SpecificationCodes.CollectionChanged += DetailCollectionChanged;
+                        }
+                        if (_editableSoftwareOption.ActivationRules != null)
+                        {
+                            _editableSoftwareOption.ActivationRules.CollectionChanged += DetailCollectionChanged;
+                            foreach (var item in _editableSoftwareOption.ActivationRules) item.PropertyChanged += DetailItemPropertyChanged;
+                        }
+                        if (_editableSoftwareOption.Requirements != null)
+                        {
+                            _editableSoftwareOption.Requirements.CollectionChanged += DetailCollectionChanged;
+                        }
                     }
+                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (DeleteCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    OnPropertyChanged(nameof(CanAccessDetailedTabs));
+                    (AddSpecCodeCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddActivationRuleCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddRequirementCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 }
             }
         }
+
+        // Handler for property changes on items within detail collections (e.g., an ActivationRule's Name)
+        private void DetailItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (IsEditMode) IsDirty = true;
+        }
+
+        // Handler for changes to the detail collections themselves (add/remove)
+        private void DetailCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsEditMode) IsDirty = true;
+
+            // If new items were added to ActivationRules, attach property changed handlers for inline editing
+            if (sender == EditableSoftwareOption?.ActivationRules && e.NewItems != null)
+            {
+                foreach (var item in e.NewItems.OfType<SoftwareOptionActivationRule>())
+                {
+                    item.PropertyChanged += DetailItemPropertyChanged;
+                }
+            }
+            // If items were removed from ActivationRules, detach property changed handlers
+            if (sender == EditableSoftwareOption?.ActivationRules && e.OldItems != null)
+            {
+                foreach (var item in e.OldItems.OfType<SoftwareOptionActivationRule>())
+                {
+                    item.PropertyChanged -= DetailItemPropertyChanged;
+                }
+            }
+            // Add similar logic for Requirements if their items become inline editable
+        }
+
 
         private void EditableSoftwareOption_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (IsEditMode) // Only mark as dirty if in edit mode
+            if (IsEditMode)
             {
-                IsDirty = true;
+                // Avoid marking dirty for changes to collections themselves if handled by DetailCollectionChanged
+                // or for properties that don't signify a user edit that needs saving for the main object.
+                if (e.PropertyName != nameof(SoftwareOption.SpecificationCodes) &&
+                    e.PropertyName != nameof(SoftwareOption.ActivationRules) &&
+                    e.PropertyName != nameof(SoftwareOption.Requirements) &&
+                    e.PropertyName != nameof(SoftwareOption.OptionNumbers))
+                {
+                    IsDirty = true;
+                }
             }
         }
 
-        private string _tabDisplayName;
-        public string TabDisplayName
+        private bool _isDirty;
+        public bool IsDirty
         {
-            get => _tabDisplayName;
-            set => SetField(ref _tabDisplayName, value);
+            get => _isDirty;
+            set
+            {
+                if (SetField(ref _isDirty, value))
+                {
+                    UpdateIconAndHeader();
+                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                }
+            }
         }
 
-        private string _iconKind;
-        public string IconKind
+
+        private string _tabHeader;
+        public string TabHeader
+        {
+            get => _tabHeader;
+            set => SetField(ref _tabHeader, value);
+        }
+
+        private materialDesign.PackIconKind _iconKind;
+        public materialDesign.PackIconKind IconKind
         {
             get => _iconKind;
             set => SetField(ref _iconKind, value);
-        }
-
-        private bool _isEditMode;
-        public bool IsEditMode
-        {
-            get => _isEditMode;
-            set
-            {
-                if (SetField(ref _isEditMode, value))
-                {
-                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
-                    (CancelEditCommand as RelayCommand)?.RaiseCanExecuteChanged();
-                    (EditCommand as RelayCommand)?.RaiseCanExecuteChanged();
-                    UpdateIconAndHeader();
-                    if (!_isEditMode && IsDirty) // If exiting edit mode and was dirty (e.g. after save/cancel)
-                    {
-                        // IsDirty should be reset by Save/Cancel explicitly
-                    }
-                }
-            }
         }
 
         private bool _isPinned;
@@ -88,175 +164,169 @@ namespace RuleArchitectPrototype.ViewModels
             }
         }
 
-        private bool _isDirty;
-        public bool IsDirty
+        private bool _isEditMode;
+        public bool IsEditMode
         {
-            get => _isDirty;
-            private set // Can only be set internally or by property changes
+            get => _isEditMode;
+            set
             {
-                if (SetField(ref _isDirty, value))
+                if (SetField(ref _isEditMode, value))
                 {
                     UpdateIconAndHeader();
-                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged(); // Save should be enabled if dirty
+                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (CancelCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (EditCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddSpecCodeCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddActivationRuleCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddRequirementCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 }
             }
         }
 
-        private TabbedRulesheetViewModel _parentViewModel;
+        private bool _wasOriginallyNew;
+        public bool WasOriginallyNew
+        {
+            get => _wasOriginallyNew;
+            private set
+            {
+                if (SetField(ref _wasOriginallyNew, value))
+                {
+                    OnPropertyChanged(nameof(CanAccessDetailedTabs));
+                    (AddSpecCodeCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddActivationRuleCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                    (AddRequirementCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        public bool CanAccessDetailedTabs => EditableSoftwareOption != null && !WasOriginallyNew;
+
+
+        public string TabDisplayName => EditableSoftwareOption?.PrimaryName ?? "New Rulesheet";
+        public int SoftwareOptionId => EditableSoftwareOption?.SoftwareOptionId ?? 0;
+
+        private readonly TabbedRulesheetViewModel _parentViewModel;
 
         public ObservableCollection<ControlSystem> AvailableControlSystems { get; }
         public ObservableCollection<MachineType> AvailableMachineTypes { get; }
 
-        public ICommand CloseTabCommand { get; }
-        public ICommand EditCommand { get; }
+
         public ICommand SaveCommand { get; }
-        public ICommand CancelEditCommand { get; }
+        public ICommand EditCommand { get; }
+        public ICommand CancelCommand { get; }
+        public ICommand CloseTabCommand { get; }
         public ICommand PinTabCommand { get; }
+        public ICommand DeleteCommand { get; }
 
-        public int SoftwareOptionId => _originalSoftwareOption.SoftwareOptionId;
-        // This helps identify if the tab was for a "New Rulesheet" that hasn't been saved yet.
-        public bool WasOriginallyNew => _originalSoftwareOption.SoftwareOptionId == 0;
+        public ICommand AddSpecCodeCommand { get; }
+        public ICommand AddActivationRuleCommand { get; }
+        public ICommand AddRequirementCommand { get; }
 
 
-        public RulesheetDetailTabViewModel(SoftwareOption softwareOption, TabbedRulesheetViewModel parentViewModel,
+        public RulesheetDetailTabViewModel(SoftwareOption softwareOption,
+                                           TabbedRulesheetViewModel parentViewModel,
                                            ObservableCollection<ControlSystem> availableControlSystems,
                                            ObservableCollection<MachineType> availableMachineTypes)
         {
-            _originalSoftwareOption = softwareOption; // This is the definitive state (either from master list or a new placeholder)
-            EditableSoftwareOption = softwareOption.Clone(); // Initial editable copy
-
             _parentViewModel = parentViewModel;
             AvailableControlSystems = availableControlSystems;
             AvailableMachineTypes = availableMachineTypes;
+
+            _originalSoftwareOption = softwareOption.Clone();
+
+            WasOriginallyNew = softwareOption.SoftwareOptionId >= 2000 || softwareOption.SoftwareOptionId == 0;
+            EditableSoftwareOption = softwareOption; // This will attach property/collection changed handlers
+
+            SaveCommand = new RelayCommand(PerformSave, CanPerformSave);
+            EditCommand = new RelayCommand(PerformEdit, CanPerformEdit);
+            CancelCommand = new RelayCommand(PerformCancelEdit, CanPerformCancelEdit);
+            CloseTabCommand = new RelayCommand(() => _parentViewModel.CloseTab(this));
+            PinTabCommand = new RelayCommand(PerformPinToggle);
+            DeleteCommand = new RelayCommand(PerformDelete, CanPerformDelete);
+
+            AddSpecCodeCommand = new RelayCommand(PerformAddSpecCode, CanAddDetailItem);
+            AddActivationRuleCommand = new RelayCommand(PerformAddActivationRule, CanAddDetailItem);
+            AddRequirementCommand = new RelayCommand(PerformAddRequirement, CanAddDetailItem);
+
+            IsEditMode = WasOriginallyNew;
+            UpdateIconAndHeader();
+            OnPropertyChanged(nameof(CanAccessDetailedTabs));
+        }
+
+        public void UpdateContent(SoftwareOption newSoftwareOption)
+        {
+            _originalSoftwareOption = newSoftwareOption.Clone();
+            WasOriginallyNew = newSoftwareOption.SoftwareOptionId >= 2000 || newSoftwareOption.SoftwareOptionId == 0;
+            EditableSoftwareOption = newSoftwareOption; // This will re-attach handlers
+            IsEditMode = WasOriginallyNew;
+            UpdateIconAndHeader();
+            OnPropertyChanged(nameof(CanAccessDetailedTabs));
+        }
+
+
+        private void UpdateIconAndHeader()
+        {
+            IconKind = IsEditMode ? materialDesign.PackIconKind.FileEditOutline : materialDesign.PackIconKind.FileDocumentOutline;
+            string name = string.IsNullOrWhiteSpace(EditableSoftwareOption?.PrimaryName) ? "New Rulesheet" : EditableSoftwareOption.PrimaryName;
+            TabHeader = IsDirty ? $"{name}*" : name;
+        }
+
+        private bool CanPerformSave() => IsEditMode && IsDirty && EditableSoftwareOption != null && !string.IsNullOrWhiteSpace(EditableSoftwareOption.PrimaryName);
+        private void PerformSave()
+        {
+            if (!CanPerformSave()) return;
 
             if (EditableSoftwareOption.ControlSystemId.HasValue && EditableSoftwareOption.ControlSystem == null)
             {
                 EditableSoftwareOption.ControlSystem = AvailableControlSystems.FirstOrDefault(cs => cs.ControlSystemId == EditableSoftwareOption.ControlSystemId.Value);
             }
 
-            // New items start unpinned and in edit mode. Existing items start pinned and in view mode.
-            IsPinned = (softwareOption.SoftwareOptionId != 0);
-            IsEditMode = (softwareOption.SoftwareOptionId == 0);
-            IsDirty = false; // Starts clean
-
-            UpdateIconAndHeader(); // Initial setup
-
-            CloseTabCommand = new RelayCommand(() => _parentViewModel.CloseTab(this));
-            EditCommand = new RelayCommand(PerformEdit, CanPerformEdit);
-            SaveCommand = new RelayCommand(PerformSave, CanPerformSave);
-            CancelEditCommand = new RelayCommand(PerformCancelEdit, CanPerformCancelEdit);
-            PinTabCommand = new RelayCommand(PerformPinToggle);
+            _parentViewModel.SaveRulesheetFromTab(EditableSoftwareOption);
+            _originalSoftwareOption = EditableSoftwareOption.Clone();
+            IsDirty = false;
+            IsEditMode = false;
+            _parentViewModel.StatusMessage = $"Saved: {TabDisplayName}";
+            WasOriginallyNew = false;
         }
 
-        public void UpdateContent(SoftwareOption newSoftwareOption)
-        {
-            // Detach old event handler
-            if (EditableSoftwareOption != null)
-            {
-                EditableSoftwareOption.PropertyChanged -= EditableSoftwareOption_PropertyChanged;
-            }
-
-            _originalSoftwareOption = newSoftwareOption; // Update the base state
-            EditableSoftwareOption = newSoftwareOption.Clone(); // Set new editable content
-
-            IsPinned = false; // When content is replaced, it's a new preview, so unpin
-            IsEditMode = false; // Start in view mode for existing items
-            IsDirty = false;    // Reset dirty state
-            UpdateIconAndHeader();
-            OnPropertyChanged(nameof(EditableSoftwareOption)); // Notify UI that the whole object changed
-        }
-
-        private void UpdateIconAndHeader()
-        {
-            string baseName = EditableSoftwareOption.PrimaryName ?? "New Rulesheet";
-            TabDisplayName = IsDirty ? baseName + "*" : baseName;
-
-            if (IsEditMode)
-            {
-                IconKind = WasOriginallyNew && !IsPinned ? "FilePlusOutline" : "FileEditOutline";
-            }
-            else // View Mode
-            {
-                IconKind = IsPinned ? "FileDocument" : "FileFindOutline"; // Different icon for unpinned preview
-            }
-        }
-
-        private bool CanPerformEdit() => !IsEditMode && (_originalSoftwareOption.SoftwareOptionId != 0 || IsPinned); // Can edit saved items or pinned new items
+        private bool CanPerformEdit() => !IsEditMode && EditableSoftwareOption != null;
         private void PerformEdit()
         {
             IsEditMode = true;
-        }
-
-        private bool CanPerformSave() => IsEditMode && IsDirty;
-        private void PerformSave()
-        {
-            if (string.IsNullOrWhiteSpace(EditableSoftwareOption.PrimaryName))
-            {
-                _parentViewModel.StatusMessage = "Error: Primary Name cannot be empty.";
-                // Consider a more user-friendly error display (e.g., dialog)
-                return;
-            }
-
-            var masterList = _parentViewModel._allRulesheetsMasterList;
-            bool isSavingNewItem = (_originalSoftwareOption.SoftwareOptionId == 0);
-
-            if (isSavingNewItem)
-            {
-                // Assign a new ID if it's truly new (SoftwareOptionId on Editable might have been set if loaded from a template)
-                EditableSoftwareOption.SoftwareOptionId = (masterList.Any() ? masterList.Max(r => r.SoftwareOptionId) : 0) + 1;
-                masterList.Add(EditableSoftwareOption.Clone()); // Add a clone to the master list
-                _parentViewModel.StatusMessage = $"New rulesheet '{EditableSoftwareOption.PrimaryName}' added.";
-            }
-            else // Updating an existing item
-            {
-                var masterItem = masterList.FirstOrDefault(so => so.SoftwareOptionId == EditableSoftwareOption.SoftwareOptionId);
-                if (masterItem != null)
-                {
-                    int index = masterList.IndexOf(masterItem);
-                    masterList[index] = EditableSoftwareOption.Clone(); // Replace with a clone of the edited version
-                    _parentViewModel.StatusMessage = $"Saved changes to: {EditableSoftwareOption.PrimaryName}";
-                }
-                else
-                {
-                    // This case should ideally not happen if logic is correct (trying to save an "existing" item that's not in master list)
-                    // Potentially add it as new if it's missing, though this implies an issue elsewhere.
-                    masterList.Add(EditableSoftwareOption.Clone());
-                    _parentViewModel.StatusMessage = $"Saved (and added missing): {EditableSoftwareOption.PrimaryName}";
-                }
-            }
-
-            _originalSoftwareOption = EditableSoftwareOption.Clone(); // Update the tab's "original" to the saved state
-            IsDirty = false;
-            IsEditMode = false;
-            IsPinned = true; // Automatically pin on save
-            // UpdateIconAndHeader() is called by IsEditMode and IsPinned setters
-            _parentViewModel.AllRulesheetsView.Refresh(); // Refresh the main list view
+            _parentViewModel.StatusMessage = $"Editing: {TabDisplayName}";
         }
 
         private bool CanPerformCancelEdit() => IsEditMode;
         private void PerformCancelEdit()
         {
-            // If it was a new item (based on original ID) AND it's not pinned, closing is more appropriate
             if (WasOriginallyNew && !IsPinned)
             {
+                IsDirty = false;
                 _parentViewModel.CloseTab(this);
                 _parentViewModel.StatusMessage = "Add new rulesheet cancelled.";
             }
-            else // Revert existing item or a new item that got pinned before saving
+            else
             {
-                // Detach old event handler before replacing EditableSoftwareOption
+                // Detach handlers before replacing EditableSoftwareOption
                 if (EditableSoftwareOption != null)
                 {
                     EditableSoftwareOption.PropertyChanged -= EditableSoftwareOption_PropertyChanged;
+                    if (EditableSoftwareOption.SpecificationCodes != null) EditableSoftwareOption.SpecificationCodes.CollectionChanged -= DetailCollectionChanged;
+                    if (EditableSoftwareOption.ActivationRules != null)
+                    {
+                        EditableSoftwareOption.ActivationRules.CollectionChanged -= DetailCollectionChanged;
+                        foreach (var item in EditableSoftwareOption.ActivationRules) item.PropertyChanged -= DetailItemPropertyChanged;
+                    }
+                    if (EditableSoftwareOption.Requirements != null) EditableSoftwareOption.Requirements.CollectionChanged -= DetailCollectionChanged;
                 }
-                EditableSoftwareOption = _originalSoftwareOption.Clone(); // Revert to last saved/loaded state
-                if (EditableSoftwareOption != null) // Re-attach event handler
-                {
-                    EditableSoftwareOption.PropertyChanged += EditableSoftwareOption_PropertyChanged;
-                }
+
+                bool oldWasNew = _originalSoftwareOption.SoftwareOptionId >= 2000 || _originalSoftwareOption.SoftwareOptionId == 0;
+
+                EditableSoftwareOption = _originalSoftwareOption.Clone(); // This will re-attach handlers via its setter
+
+                WasOriginallyNew = oldWasNew;
                 IsDirty = false;
-                IsEditMode = false;
-                // UpdateIconAndHeader() is called by IsEditMode setter
+                IsEditMode = WasOriginallyNew;
                 _parentViewModel.StatusMessage = $"Cancelled edits for: {TabDisplayName.TrimEnd('*')}";
             }
         }
@@ -264,6 +334,174 @@ namespace RuleArchitectPrototype.ViewModels
         private void PerformPinToggle()
         {
             IsPinned = !IsPinned;
+        }
+
+        private bool CanPerformDelete()
+        {
+            return EditableSoftwareOption != null;
+        }
+
+        private void PerformDelete()
+        {
+            if (EditableSoftwareOption == null) return;
+
+            string displayName = string.IsNullOrWhiteSpace(EditableSoftwareOption.PrimaryName) || WasOriginallyNew ?
+                                 "this new/unsaved rulesheet" :
+                                 EditableSoftwareOption.PrimaryName;
+
+            var result = MessageBox.Show($"Are you sure you want to delete '{displayName}'?\nThis action cannot be undone, and any unsaved changes in this tab will be lost.",
+                                         "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                _parentViewModel.HandleDeleteRequest(this);
+            }
+        }
+
+        private bool CanAddDetailItem()
+        {
+            return IsEditMode && CanAccessDetailedTabs;
+        }
+
+        // --- THIS IS THE UPDATED METHOD ---
+        private void PerformAddSpecCode()
+        {
+            if (EditableSoftwareOption == null || _parentViewModel == null)
+            {
+                MessageBox.Show("Cannot add spec code: Software Option or Parent ViewModel is not available.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            MachineType machineTypeForDialog = null;
+            // Attempt to determine MachineType based on the current SoftwareOption's ControlSystem
+            if (EditableSoftwareOption.ControlSystem != null)
+            {
+                string controlNameUpper = EditableSoftwareOption.ControlSystem.Name.ToUpper();
+                if (controlNameUpper.Contains("LATHE") || controlNameUpper.Contains("P300L"))
+                {
+                    machineTypeForDialog = _parentViewModel.AvailableMachineTypes.FirstOrDefault(mt => mt.Name.Equals("Lathe", StringComparison.OrdinalIgnoreCase));
+                }
+                else if (controlNameUpper.Contains("MACHINING CENTER") || controlNameUpper.Contains("P300M"))
+                {
+                    machineTypeForDialog = _parentViewModel.AvailableMachineTypes.FirstOrDefault(mt => mt.Name.Equals("Machining Center", StringComparison.OrdinalIgnoreCase));
+                }
+                // Add more specific mappings if needed, e.g., based on ControlSystem.DefaultMachineType if you add such a property
+
+                if (machineTypeForDialog == null) // Fallback if no specific match from name
+                {
+                    // If ControlSystem has a default machine type concept, use it.
+                    // Otherwise, we might need to prompt the user or use a general default.
+                    // For now, using the first available as a last resort if ControlSystem is set.
+                    machineTypeForDialog = _parentViewModel.AvailableMachineTypes.FirstOrDefault();
+                    _parentViewModel.StatusMessage = $"Warning: Could not infer Machine Type from Control System '{EditableSoftwareOption.ControlSystem.Name}'. Defaulting. Please verify.";
+                }
+            }
+
+            if (machineTypeForDialog == null) // If still null (e.g. ControlSystem not set on SO, or no AvailableMachineTypes)
+            {
+                machineTypeForDialog = _parentViewModel.AvailableMachineTypes.FirstOrDefault(); // Absolute fallback
+                if (machineTypeForDialog == null)
+                {
+                    MessageBox.Show("No Machine Types available in the system. Cannot add Specification Code.", "Configuration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                _parentViewModel.StatusMessage = $"Warning: Software Option has no Control System set. Defaulting Machine Type to '{machineTypeForDialog.Name}'. Please verify.";
+            }
+
+
+            var dialogViewModel = new AddEditSpecCodeDialogViewModel(
+                machineTypeForDialog,
+                _parentViewModel.AllGlobalSpecCodeDefinitions, // Pass the global list from TabbedRulesheetViewModel
+                EditableSoftwareOption.ActivationRules,
+                _parentViewModel // Pass the TabbedRulesheetViewModel instance
+            );
+
+            var dialogView = new AddEditSpecCodeDialogView
+            {
+                DataContext = dialogViewModel,
+                Owner = Application.Current.MainWindow // Or find a more specific owner if possible
+            };
+
+            if (dialogView.ShowDialog() == true)
+            {
+                // Dialog was saved by the user
+                SpecCodeDefinition resultingSpecDefFromDialog = dialogViewModel.ResultSpecCodeDefinition;
+
+                if (resultingSpecDefFromDialog != null)
+                {
+                    SpecCodeDefinition finalSpecCodeDefToUse;
+                    if (dialogViewModel.IsCreatingNewSpecCodeDefinition)
+                    {
+                        // The dialog prepared a new SpecCodeDefinition.
+                        // Call the parent's GetOrCreate to add it to the global list and get the managed instance.
+                        finalSpecCodeDefToUse = _parentViewModel.GetOrCreateSpecCodeDefinition(
+                            0, // Pass 0 or temp ID; GetOrCreate will assign a new one if it's truly new
+                            resultingSpecDefFromDialog.SpecCodeNo,
+                            resultingSpecDefFromDialog.SpecCodeBit,
+                            resultingSpecDefFromDialog.Description,
+                            resultingSpecDefFromDialog.Category,
+                            resultingSpecDefFromDialog.MachineType // Ensure MachineType object is passed
+                        );
+                    }
+                    else
+                    {
+                        // User selected an existing SpecCodeDefinition
+                        finalSpecCodeDefToUse = resultingSpecDefFromDialog;
+                    }
+
+                    if (finalSpecCodeDefToUse != null)
+                    {
+                        var newSosCode = new SoftwareOptionSpecificationCode
+                        {
+                            // SoftwareOptionSpecificationCodeId will be 0 or assigned by data layer upon actual DB save
+                            SoftwareOptionId = EditableSoftwareOption.SoftwareOptionId,
+                            SpecCodeDefinitionId = finalSpecCodeDefToUse.SpecCodeDefinitionId,
+                            SpecCodeDefinition = finalSpecCodeDefToUse, // Assign the actual object
+                            SoftwareOptionActivationRuleId = dialogViewModel.ResultSoftwareOptionActivationRuleId,
+                            ActivationRule = dialogViewModel.ResultSoftwareOptionActivationRuleId.HasValue ?
+                                             EditableSoftwareOption.ActivationRules.FirstOrDefault(ar => ar.SoftwareOptionActivationRuleId == dialogViewModel.ResultSoftwareOptionActivationRuleId.Value)
+                                             : null,
+                            SpecificInterpretation = dialogViewModel.SpecificInterpretation
+                        };
+                        EditableSoftwareOption.SpecificationCodes.Add(newSosCode);
+                        // IsDirty will be set by DetailCollectionChanged handler
+                        _parentViewModel.StatusMessage = $"Added Spec Code: {finalSpecCodeDefToUse.SpecCodeNo}/{finalSpecCodeDefToUse.SpecCodeBit}";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to obtain or create a valid Specification Code Definition from the dialog processing.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Dialog did not return a valid Specification Code Definition.", "Operation Cancelled or Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            // else: User cancelled the dialog
+        }
+        // --- END UPDATED METHOD ---
+
+        private void PerformAddActivationRule()
+        {
+            if (EditableSoftwareOption != null)
+            {
+                var newRule = new SoftwareOptionActivationRule
+                {
+                    // SoftwareOptionActivationRuleId will be 0 or assigned by data layer upon actual DB save
+                    RuleName = "New Rule Name",
+                    ActivationSetting = "1 = ON",
+                    Notes = ""
+                };
+                EditableSoftwareOption.ActivationRules.Add(newRule);
+                // IsDirty flag will be set by the DetailCollectionChanged handler.
+            }
+        }
+
+        private void PerformAddRequirement()
+        {
+            MessageBox.Show("Placeholder: Open dialog to add a new Requirement (type, condition, values).", "Add Requirement", MessageBoxButton.OK, MessageBoxImage.Information);
+            // When fully implemented, this would add to EditableSoftwareOption.Requirements
+            // and IsDirty would be set by the DetailCollectionChanged handler.
         }
     }
 }

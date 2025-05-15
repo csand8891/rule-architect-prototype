@@ -1,19 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj": {}
+    "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj": {}
   },
   "projects": {
-    "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj": {
+    "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj",
+        "projectUniqueName": "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj",
         "projectName": "RuleArchitectPrototype",
-        "projectPath": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj",
+        "projectPath": "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj",
         "packagesPath": "C:\\Users\\corey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\obj\\",
+        "outputPath": "C:\\Users\\corey\\dev\\rule-architect-prototype\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],

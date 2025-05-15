@@ -20,14 +20,44 @@
             <TextBlock Text="{Binding EditableSoftwareOption.PrimaryName, StringFormat='Details for: {0}'}" 
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}" Margin="0,0,0,16"/>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <Button Content="Edit" Command="{Binding EditCommand}" 
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,16" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        Command="{Binding EditCommand}"
                         Visibility="{Binding IsEditMode, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
-                        Style="{StaticResource MaterialDesignRaisedButton}" Margin="0,0,8,0"/>
-                <Button Content="Save Changes" Command="{Binding SaveCommand}" 
-                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignRaisedButton}" Background="{DynamicResource PrimaryHueMidBrush}" Margin="0,0,8,0"/>
-                <Button Content="Cancel Edit" Command="{Binding CancelEditCommand}" 
-                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                        ToolTip="Edit Rulesheet"
+                        Margin="0,0,8,0">
+                    <materialDesign:PackIcon Kind="Pencil" />
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        Command="{Binding SaveCommand}"
+                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        ToolTip="Save Changes"
+                        Background="{DynamicResource PrimaryHueMidBrush}"
+                        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                        Margin="0,0,8,0">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        Command="{Binding CancelCommand}"
+                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        ToolTip="Cancel Edit"
+                        Background="LightGray"
+                        Foreground="Black"
+                        Margin="0,0,16,0">
+                    <materialDesign:PackIcon Kind="Cancel" />
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        Command="{Binding DeleteCommand}"
+                        Visibility="{Binding IsEditMode, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                        ToolTip="Delete Rulesheet"
+                        Background="IndianRed"
+                        Foreground="White"
+                        Margin="0,0,8,0">
+                    <materialDesign:PackIcon Kind="Delete" />
+                </Button>
             </StackPanel>
 
             <TabControl materialDesign:ColorZoneAssist.Mode="Standard" Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
@@ -78,63 +108,94 @@
                     </materialDesign:ColorZone>
                 </TabItem>
 
-                <TabItem Header="Option Numbers">
+                <TabItem Header="Option Configuration" IsEnabled="{Binding CanAccessDetailedTabs}">
                     <materialDesign:ColorZone Mode="Standard" Padding="10">
-                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.OptionNumbers}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" MaxHeight="200">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Option Number" Binding="{Binding OptionNumber}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Specification Codes" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" 
+                                        Command="{Binding AddSpecCodeCommand}"
+                                        ToolTip="Add Specification Code"
+                                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <materialDesign:PackIcon Kind="Add" />
+                                </Button>
+                            </Grid>
+                            <DataGrid ItemsSource="{Binding EditableSoftwareOption.SpecificationCodes}" AutoGenerateColumns="False" 
+                                      IsReadOnly="{Binding IsEditMode, Converter={StaticResource InverseBooleanConverter}}" 
+                                      CanUserAddRows="{Binding IsEditMode}" CanUserDeleteRows="True" 
+                                      MaxHeight="250" Margin="0,0,0,16"
+                                      SelectionUnit="CellOrRowHeader" SelectionMode="Extended">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Category" Binding="{Binding SpecCodeDefinition.Category}" Width="Auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="No." Binding="{Binding SpecCodeDefinition.SpecCodeNo}" Width="Auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Bit" Binding="{Binding SpecCodeDefinition.SpecCodeBit}" Width="Auto" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Description" Binding="{Binding SpecCodeDefinition.Description}" Width="2*" IsReadOnly="True"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Grid Margin="0,10,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Activation Rules" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" 
+                                        Command="{Binding AddActivationRuleCommand}"
+                                        ToolTip="Add Activation Rule"
+                                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <materialDesign:PackIcon Kind="Add" />
+                                </Button>
+                            </Grid>
+                            <DataGrid ItemsSource="{Binding EditableSoftwareOption.ActivationRules}" AutoGenerateColumns="False" 
+                                      IsReadOnly="{Binding IsEditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                      CanUserAddRows="{Binding IsEditMode}" CanUserDeleteRows="True" 
+                                      MaxHeight="150"
+                                      SelectionUnit="CellOrRowHeader" SelectionMode="Extended">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Rule Name" Binding="{Binding RuleName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="Setting" Binding="{Binding ActivationSetting, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="Notes" Binding="{Binding Notes, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </materialDesign:ColorZone>
                 </TabItem>
 
-                <TabItem Header="Spec Codes">
+                <TabItem Header="Requirements" IsEnabled="{Binding CanAccessDetailedTabs}">
                     <materialDesign:ColorZone Mode="Standard" Padding="10">
-                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.SpecificationCodes}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="400">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Machine" Binding="{Binding SpecCodeDefinition.MachineType.Name}" Width="Auto"/>
-                                <DataGridTextColumn Header="No." Binding="{Binding SpecCodeDefinition.SpecCodeNo}" Width="Auto"/>
-                                <DataGridTextColumn Header="Bit" Binding="{Binding SpecCodeDefinition.SpecCodeBit}" Width="Auto"/>
-                                <DataGridTextColumn Header="Description" Binding="{Binding SpecCodeDefinition.Description}" Width="2*"/>
-                                <DataGridTextColumn Header="Category" Binding="{Binding SpecCodeDefinition.Category}" Width="Auto"/>
-                                <DataGridTextColumn Header="Activation Rule" Binding="{Binding ActivationRule.RuleName}" Width="*">
-                                    <DataGridTextColumn.CellStyle>
-                                        <Style TargetType="DataGridCell">
-                                            <Setter Property="ToolTip" Value="{Binding ActivationRule.ActivationSetting}" />
-                                        </Style>
-                                    </DataGridTextColumn.CellStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="Setting" Binding="{Binding ActivationRule.ActivationSetting}" Width="Auto"/>
-                                <DataGridTextColumn Header="Specific Interpretation" Binding="{Binding SpecificInterpretation}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </materialDesign:ColorZone>
-                </TabItem>
-
-                <TabItem Header="Activation Rules">
-                    <materialDesign:ColorZone Mode="Standard" Padding="10">
-                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.ActivationRules}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Rule Name" Binding="{Binding RuleName}" Width="*"/>
-                                <DataGridTextColumn Header="Setting" Binding="{Binding ActivationSetting}" Width="*"/>
-                                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="2*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </materialDesign:ColorZone>
-                </TabItem>
-
-                <TabItem Header="Requirements">
-                    <materialDesign:ColorZone Mode="Standard" Padding="10">
-                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.Requirements}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="300">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Type" Binding="{Binding RequirementType}" Width="*"/>
-                                <DataGridTextColumn Header="Condition" Binding="{Binding Condition}" Width="*"/>
-                                <DataGridTextColumn Header="Value" Binding="{Binding GeneralRequiredValue}" Width="*"/>
-                                <DataGridTextColumn Header="OSP File" Binding="{Binding OspFileName}" Width="*"/>
-                                <DataGridTextColumn Header="OSP Version" Binding="{Binding OspFileVersion}" Width="*"/>
-                                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="2*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Requirements" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" 
+                                        Command="{Binding AddRequirementCommand}"
+                                        ToolTip="Add Requirement"
+                                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <materialDesign:PackIcon Kind="Add" />
+                                </Button>
+                            </Grid>
+                            <DataGrid ItemsSource="{Binding EditableSoftwareOption.Requirements}" AutoGenerateColumns="False" 
+                                      IsReadOnly="{Binding IsEditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                      CanUserAddRows="{Binding IsEditMode}" CanUserDeleteRows="True" 
+                                      MaxHeight="300"
+                                      SelectionUnit="CellOrRowHeader" SelectionMode="Extended">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Type" Binding="{Binding RequirementType, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="Condition" Binding="{Binding Condition, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="Value" Binding="{Binding GeneralRequiredValue, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="OSP File" Binding="{Binding OspFileName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="OSP Version" Binding="{Binding OspFileVersion, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                    <DataGridTextColumn Header="Notes" Binding="{Binding Notes, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </materialDesign:ColorZone>
                 </TabItem>
             </TabControl>

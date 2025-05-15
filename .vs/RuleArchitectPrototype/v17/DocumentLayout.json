@@ -1,92 +1,120 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\",
+  "WorkspaceRootPath": "C:\\Users\\corey\\dev\\rule-architect-prototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\viewmodels\\rulesheetdetailtabviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\viewmodels\\addeditspeccodedialgoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:viewmodels\\addeditspeccodedialgoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\viewmodels\\rulesheetdetailtabviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:viewmodels\\rulesheetdetailtabviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\viewmodels\\tabbedrulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:viewmodels\\tabbedrulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\views\\addeditspeccodedialogview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:views\\addeditspeccodedialogview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\tabbedrulesheetview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:tabbedrulesheetview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\converters\\nulltovalueconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\nulltovalueconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\converters\\pintooltipconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\pintooltipconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\views\\addeditspeccodedialogview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:views\\addeditspeccodedialogview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\converters\\piniconconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\piniconconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\models\\softwareoptionspecificationcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:models\\softwareoptionspecificationcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\views\\rulesheetdetailtabview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\views\\rulesheetdetailtabview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:views\\rulesheetdetailtabview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\views\\rulesheetdetailtabview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:views\\rulesheetdetailtabview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\viewmodels\\tabbedrulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:viewmodels\\tabbedrulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\tabbedrulesheetview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:tabbedrulesheetview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\viewmodels\\rulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\nulltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\nulltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\isemptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\isemptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\tabbedrulesheetview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:tabbedrulesheetview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\models\\optionnumberregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:models\\optionnumberregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\dev\\rule-architect-prototype\\models\\parametermapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:models\\parametermapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\viewmodels\\rulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:viewmodels\\rulesheetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\pintooltipconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\pintooltipconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\converters\\isemptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\isemptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\piniconconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\piniconconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\views\\rulesheetdetailtabview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:views\\rulesheetdetailtabview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\tabbedrulesheetview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:tabbedrulesheetview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\corey\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|c:\\users\\corey\\software_dev\\work\\rule-architect-prototype\\rulearchitectprototype\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\converters\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\models\\yourrulesheetmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\models\\yourrulesheetmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:models\\yourrulesheetmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\models\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\models\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:models\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\converters\\nulltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\nulltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\converters\\inversebooleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\inversebooleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\inversebooleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|C:\\Users\\corey\\dev\\rule-architect-prototype\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED6291B-74E4-475A-8ED6-07F5F6BD15CF}|RuleArchitectPrototype.csproj|solutionrelative:converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -109,89 +137,90 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PinIconConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\PinIconConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\PinIconConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\PinIconConverter.cs",
-              "RelativeToolTip": "Converters\\PinIconConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T01:53:24.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RulesheetDetailTabViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\ViewModels\\RulesheetDetailTabViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\RulesheetDetailTabViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\RulesheetDetailTabViewModel.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\ViewModels\\RulesheetDetailTabViewModel.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\RulesheetDetailTabViewModel.cs",
               "RelativeToolTip": "ViewModels\\RulesheetDetailTabViewModel.cs",
-              "ViewState": "AgIAAN4AAAAAAAAAAAAqwA0BAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJUBAAAAAAAAAIAwwKgBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T22:31:31.061Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PinTooltipConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\PinTooltipConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\PinTooltipConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\PinTooltipConverter.cs",
-              "RelativeToolTip": "Converters\\PinTooltipConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AddEditSpecCodeDialgoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\AddEditSpecCodeDialgoViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\AddEditSpecCodeDialgoViewModel.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\AddEditSpecCodeDialgoViewModel.cs",
+              "RelativeToolTip": "ViewModels\\AddEditSpecCodeDialgoViewModel.cs",
+              "ViewState": "AgIAANEAAAAAAAAAAAAYwAIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T01:54:31.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RulesheetDetailTabView.xaml",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Views\\RulesheetDetailTabView.xaml",
-              "RelativeDocumentMoniker": "Views\\RulesheetDetailTabView.xaml",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Views\\RulesheetDetailTabView.xaml",
-              "RelativeToolTip": "Views\\RulesheetDetailTabView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-14T22:28:00.641Z",
+              "WhenOpened": "2025-05-15T08:19:14.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TabbedRulesheetView.xaml",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\TabbedRulesheetView.xaml",
-              "RelativeDocumentMoniker": "TabbedRulesheetView.xaml",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\TabbedRulesheetView.xaml",
-              "RelativeToolTip": "TabbedRulesheetView.xaml",
+              "Title": "AddEditSpecCodeDialogView.xaml",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\AddEditSpecCodeDialogView.xaml",
+              "RelativeDocumentMoniker": "Views\\AddEditSpecCodeDialogView.xaml",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\AddEditSpecCodeDialogView.xaml",
+              "RelativeToolTip": "Views\\AddEditSpecCodeDialogView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-14T22:22:05.365Z",
+              "WhenOpened": "2025-05-15T08:23:59.368Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RulesheetViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\ViewModels\\RulesheetViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\RulesheetViewModel.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\ViewModels\\RulesheetViewModel.cs",
-              "RelativeToolTip": "ViewModels\\RulesheetViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYBAAANAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "SoftwareOptionSpecificationCode.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\SoftwareOptionSpecificationCode.cs",
+              "RelativeDocumentMoniker": "Models\\SoftwareOptionSpecificationCode.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\SoftwareOptionSpecificationCode.cs",
+              "RelativeToolTip": "Models\\SoftwareOptionSpecificationCode.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAYwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:41:37.915Z",
+              "WhenOpened": "2025-05-15T08:56:20.389Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "NullToValueConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\NullToValueConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\NullToValueConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\NullToValueConverter.cs",
+              "RelativeToolTip": "Converters\\NullToValueConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T08:28:45.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddEditSpecCodeDialogView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\AddEditSpecCodeDialogView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\AddEditSpecCodeDialogView.xaml.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\AddEditSpecCodeDialogView.xaml.cs",
+              "RelativeToolTip": "Views\\AddEditSpecCodeDialogView.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAowAoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T08:26:11.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "TabbedRulesheetViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\ViewModels\\TabbedRulesheetViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\TabbedRulesheetViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\TabbedRulesheetViewModel.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\ViewModels\\TabbedRulesheetViewModel.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\TabbedRulesheetViewModel.cs",
               "RelativeToolTip": "ViewModels\\TabbedRulesheetViewModel.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAIwEIBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFICAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T22:24:43.111Z",
               "EditorCaption": ""
@@ -199,48 +228,48 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "RulesheetDetailTabView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Views\\RulesheetDetailTabView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\RulesheetDetailTabView.xaml.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Views\\RulesheetDetailTabView.xaml.cs",
-              "RelativeToolTip": "Views\\RulesheetDetailTabView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T22:43:14.957Z",
+              "Title": "RulesheetDetailTabView.xaml",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\RulesheetDetailTabView.xaml",
+              "RelativeDocumentMoniker": "Views\\RulesheetDetailTabView.xaml",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\RulesheetDetailTabView.xaml",
+              "RelativeToolTip": "Views\\RulesheetDetailTabView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-14T22:28:00.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TabbedRulesheetView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\TabbedRulesheetView.xaml.cs",
-              "RelativeDocumentMoniker": "TabbedRulesheetView.xaml.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\TabbedRulesheetView.xaml.cs",
-              "RelativeToolTip": "TabbedRulesheetView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "StringToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\StringToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\StringToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\StringToVisibilityConverter.cs",
+              "RelativeToolTip": "Converters\\StringToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T22:29:08.674Z",
+              "WhenOpened": "2025-05-14T16:42:45.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-13T19:47:58.033Z",
+              "Title": "NullToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\NullToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\NullToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\NullToVisibilityConverter.cs",
+              "RelativeToolTip": "Converters\\NullToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T23:04:51.013Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "IsEmptyToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\IsEmptyToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\IsEmptyToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\IsEmptyToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\IsEmptyToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\IsEmptyToVisibilityConverter.cs",
               "RelativeToolTip": "Converters\\IsEmptyToVisibilityConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -250,11 +279,122 @@
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "TabbedRulesheetView.xaml",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\TabbedRulesheetView.xaml",
+              "RelativeDocumentMoniker": "TabbedRulesheetView.xaml",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\TabbedRulesheetView.xaml",
+              "RelativeToolTip": "TabbedRulesheetView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-14T22:22:05.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ParameterMapping.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\ParameterMapping.cs",
+              "RelativeDocumentMoniker": "Models\\ParameterMapping.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\ParameterMapping.cs",
+              "RelativeToolTip": "Models\\ParameterMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T04:29:02.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OptionNumberRegistry.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\OptionNumberRegistry.cs",
+              "RelativeDocumentMoniker": "Models\\OptionNumberRegistry.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\OptionNumberRegistry.cs",
+              "RelativeToolTip": "Models\\OptionNumberRegistry.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAuwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T04:42:59.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PinTooltipConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\PinTooltipConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\PinTooltipConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\PinTooltipConverter.cs",
+              "RelativeToolTip": "Converters\\PinTooltipConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T01:54:31.079Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RulesheetViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\RulesheetViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RulesheetViewModel.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\ViewModels\\RulesheetViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RulesheetViewModel.cs",
+              "ViewState": "AgIAACgBAAAAAAAAAAAswEABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:41:37.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PinIconConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\PinIconConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\PinIconConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\PinIconConverter.cs",
+              "RelativeToolTip": "Converters\\PinIconConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T01:53:24.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RulesheetDetailTabView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\RulesheetDetailTabView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\RulesheetDetailTabView.xaml.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Views\\RulesheetDetailTabView.xaml.cs",
+              "RelativeToolTip": "Views\\RulesheetDetailTabView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T22:43:14.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TabbedRulesheetView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\TabbedRulesheetView.xaml.cs",
+              "RelativeDocumentMoniker": "TabbedRulesheetView.xaml.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\TabbedRulesheetView.xaml.cs",
+              "RelativeToolTip": "TabbedRulesheetView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T22:29:08.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T19:47:58.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\corey\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
               "ToolTip": "C:\\Users\\corey\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs [Read Only]",
               "ViewState": "AgIAABwAAAAAAAAAAAAvwCsAAAAEAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T23:28:20.134Z",
@@ -262,24 +402,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 21,
               "Title": "RelayCommand.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Commands\\RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Commands\\RelayCommand.cs",
               "RelativeDocumentMoniker": "Commands\\RelayCommand.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Commands\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Commands\\RelayCommand.cs",
               "RelativeToolTip": "Commands\\RelayCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T23:33:08.611Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T23:33:08.611Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 22,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-13T19:45:38.116Z",
@@ -287,11 +426,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "YourRulesheetModel.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Models\\YourRulesheetModel.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\YourRulesheetModel.cs",
               "RelativeDocumentMoniker": "Models\\YourRulesheetModel.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Models\\YourRulesheetModel.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\YourRulesheetModel.cs",
               "RelativeToolTip": "Models\\YourRulesheetModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -299,11 +438,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "BaseModel.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Models\\BaseModel.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\BaseModel.cs",
               "RelativeDocumentMoniker": "Models\\BaseModel.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Models\\BaseModel.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Models\\BaseModel.cs",
               "RelativeToolTip": "Models\\BaseModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -311,23 +450,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "StringToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\StringToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\StringToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\StringToVisibilityConverter.cs",
-              "RelativeToolTip": "Converters\\StringToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:42:45.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "InverseBooleanConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\InverseBooleanConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\InverseBooleanConverter.cs",
               "RelativeDocumentMoniker": "Converters\\InverseBooleanConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\InverseBooleanConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\InverseBooleanConverter.cs",
               "RelativeToolTip": "Converters\\InverseBooleanConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -335,11 +462,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAgwEMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -347,23 +474,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "NullToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\NullToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\NullToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\NullToVisibilityConverter.cs",
-              "RelativeToolTip": "Converters\\NullToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T23:04:51.013Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "InverseBooleanToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\InverseBooleanToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\InverseBooleanToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\InverseBooleanToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\InverseBooleanToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\InverseBooleanToVisibilityConverter.cs",
               "RelativeToolTip": "Converters\\InverseBooleanToVisibilityConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -371,11 +486,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 28,
               "Title": "BooleanToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\BooleanToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\BooleanToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\Converters\\BooleanToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\corey\\dev\\rule-architect-prototype\\Converters\\BooleanToVisibilityConverter.cs",
               "RelativeToolTip": "Converters\\BooleanToVisibilityConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
