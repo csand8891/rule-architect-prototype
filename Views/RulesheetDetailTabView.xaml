@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="RuleArchitectPrototype.Views.RulesheetDetailTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RuleArchitectPrototype.Views"
+             xmlns:vm="clr-namespace:RuleArchitectPrototype.ViewModels"
+             xmlns:models="clr-namespace:RuleArchitectPrototype.Models"
+             xmlns:converters="clr-namespace:RuleArchitectPrototype.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:RulesheetDetailTabViewModel, IsDesignTimeCreatable=False}"
+             d:DesignHeight="600" d:DesignWidth="700">
+    <UserControl.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="10">
+        <StackPanel>
+            <TextBlock Text="{Binding EditableSoftwareOption.PrimaryName, StringFormat='Details for: {0}'}" 
+                       Style="{StaticResource MaterialDesignHeadline5TextBlock}" Margin="0,0,0,16"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Button Content="Edit" Command="{Binding EditCommand}" 
+                        Visibility="{Binding IsEditMode, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                        Style="{StaticResource MaterialDesignRaisedButton}" Margin="0,0,8,0"/>
+                <Button Content="Save Changes" Command="{Binding SaveCommand}" 
+                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignRaisedButton}" Background="{DynamicResource PrimaryHueMidBrush}" Margin="0,0,8,0"/>
+                <Button Content="Cancel Edit" Command="{Binding CancelEditCommand}" 
+                        Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            </StackPanel>
+
+            <TabControl materialDesign:ColorZoneAssist.Mode="Standard" Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="TabItem" BasedOn="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <Setter Property="MinWidth" Value="150"/>
+                    </Style>
+                </TabControl.ItemContainerStyle>
+
+                <TabItem Header="General">
+                    <materialDesign:ColorZone Mode="Standard" Padding="10">
+                        <StackPanel DataContext="{Binding EditableSoftwareOption}">
+                            <TextBox materialDesign:HintAssist.Hint="Primary Name"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="{Binding PrimaryName, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, NotifyOnValidationError=True}"
+                                     IsReadOnly="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Converter={StaticResource InverseBooleanConverter}}"
+                                     Margin="0,0,0,8"/>
+                            <TextBox materialDesign:HintAssist.Hint="Notes"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}"
+                                     IsReadOnly="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Converter={StaticResource InverseBooleanConverter}}"
+                                     TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="5"
+                                     VerticalScrollBarVisibility="Auto" Margin="0,8,0,8"/>
+                            <TextBox materialDesign:HintAssist.Hint="Option Number Display"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="{Binding PrimaryOptionNumberDisplay, UpdateSourceTrigger=PropertyChanged}"
+                                     IsReadOnly="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Converter={StaticResource InverseBooleanConverter}}"
+                                     Margin="0,8,0,8"/>
+                            <ComboBox materialDesign:HintAssist.Hint="Control System"
+                                      ItemsSource="{Binding DataContext.AvailableControlSystems, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                      DisplayMemberPath="Name"
+                                      SelectedValuePath="ControlSystemId"
+                                      SelectedValue="{Binding ControlSystemId, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding ControlSystem, UpdateSourceTrigger=PropertyChanged}"
+                                      IsEnabled="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                      Margin="0,8,0,8"/>
+                            <TextBox materialDesign:HintAssist.Hint="Checked By"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="{Binding CheckedBy, UpdateSourceTrigger=PropertyChanged}"
+                                     IsReadOnly="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Converter={StaticResource InverseBooleanConverter}}"
+                                     Margin="0,8,0,8"/>
+                            <DatePicker materialDesign:HintAssist.Hint="Checked Date"
+                                        SelectedDate="{Binding CheckedDate, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        IsEnabled="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                        Margin="0,8,0,16"/>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                </TabItem>
+
+                <TabItem Header="Option Numbers">
+                    <materialDesign:ColorZone Mode="Standard" Padding="10">
+                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.OptionNumbers}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" MaxHeight="200">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Option Number" Binding="{Binding OptionNumber}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </materialDesign:ColorZone>
+                </TabItem>
+
+                <TabItem Header="Spec Codes">
+                    <materialDesign:ColorZone Mode="Standard" Padding="10">
+                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.SpecificationCodes}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="400">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Machine" Binding="{Binding SpecCodeDefinition.MachineType.Name}" Width="Auto"/>
+                                <DataGridTextColumn Header="No." Binding="{Binding SpecCodeDefinition.SpecCodeNo}" Width="Auto"/>
+                                <DataGridTextColumn Header="Bit" Binding="{Binding SpecCodeDefinition.SpecCodeBit}" Width="Auto"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding SpecCodeDefinition.Description}" Width="2*"/>
+                                <DataGridTextColumn Header="Category" Binding="{Binding SpecCodeDefinition.Category}" Width="Auto"/>
+                                <DataGridTextColumn Header="Activation Rule" Binding="{Binding ActivationRule.RuleName}" Width="*">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{Binding ActivationRule.ActivationSetting}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Setting" Binding="{Binding ActivationRule.ActivationSetting}" Width="Auto"/>
+                                <DataGridTextColumn Header="Specific Interpretation" Binding="{Binding SpecificInterpretation}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </materialDesign:ColorZone>
+                </TabItem>
+
+                <TabItem Header="Activation Rules">
+                    <materialDesign:ColorZone Mode="Standard" Padding="10">
+                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.ActivationRules}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Rule Name" Binding="{Binding RuleName}" Width="*"/>
+                                <DataGridTextColumn Header="Setting" Binding="{Binding ActivationSetting}" Width="*"/>
+                                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="2*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </materialDesign:ColorZone>
+                </TabItem>
+
+                <TabItem Header="Requirements">
+                    <materialDesign:ColorZone Mode="Standard" Padding="10">
+                        <DataGrid ItemsSource="{Binding EditableSoftwareOption.Requirements}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="300">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Type" Binding="{Binding RequirementType}" Width="*"/>
+                                <DataGridTextColumn Header="Condition" Binding="{Binding Condition}" Width="*"/>
+                                <DataGridTextColumn Header="Value" Binding="{Binding GeneralRequiredValue}" Width="*"/>
+                                <DataGridTextColumn Header="OSP File" Binding="{Binding OspFileName}" Width="*"/>
+                                <DataGridTextColumn Header="OSP Version" Binding="{Binding OspFileVersion}" Width="*"/>
+                                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="2*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </materialDesign:ColorZone>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
