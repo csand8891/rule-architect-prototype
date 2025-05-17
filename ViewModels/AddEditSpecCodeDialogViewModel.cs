@@ -16,8 +16,6 @@ namespace RuleArchitectPrototype.ViewModels
         private readonly ObservableCollection<SpecCodeDefinition> _allGlobalSpecCodeDefinitions;
 
 
-        // --- Properties for UI Binding & Logic ---
-
         private MachineType _currentSoftwareOptionMachineType;
         public MachineType CurrentSoftwareOptionMachineType
         {
@@ -34,6 +32,7 @@ namespace RuleArchitectPrototype.ViewModels
                 if (SetField(ref _specCodeNo, value))
                 {
                     LoadExistingSpecCodeDefinition();
+                    OnPropertyChanged(nameof(IsCreatingNewSpecCodeDefinition));
                     (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 }
             }
@@ -48,6 +47,7 @@ namespace RuleArchitectPrototype.ViewModels
                 if (SetField(ref _specCodeBit, value))
                 {
                     LoadExistingSpecCodeDefinition();
+                    OnPropertyChanged(nameof(IsCreatingNewSpecCodeDefinition));
                     (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 }
             }
@@ -57,12 +57,11 @@ namespace RuleArchitectPrototype.ViewModels
         public SpecCodeDefinition SelectedExistingSpecCodeDefinition
         {
             get => _selectedExistingSpecCodeDefinition;
-            private set // Keep this private as it's driven by LoadExistingSpecCodeDefinition
+            private set
             {
                 if (SetField(ref _selectedExistingSpecCodeDefinition, value))
                 {
-                    // This line will now use the public setter of IsCreatingNewSpecCodeDefinition
-                    IsCreatingNewSpecCodeDefinition = (value == null && !string.IsNullOrWhiteSpace(SpecCodeNo) && !string.IsNullOrWhiteSpace(SpecCodeBit));
+                    OnPropertyChanged(nameof(IsCreatingNewSpecCodeDefinition));
                     if (value != null)
                     {
                         NewSpecCodeDescription = value.Description;
@@ -70,28 +69,42 @@ namespace RuleArchitectPrototype.ViewModels
                     }
                     else
                     {
-                        if (IsCreatingNewSpecCodeDefinition) // Check the updated value
+                        if (this.IsCreatingNewSpecCodeDefinition)
                         {
                             NewSpecCodeDescription = string.Empty;
                             SelectedNewSpecCodeCategory = AvailableCategories.First();
                         }
                     }
+                    // When SelectedExistingSpecCodeDefinition changes, it affects IsCreatingNewSpecCodeDefinition,
+                    // which in turn affects CanPerformSave.
+                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 }
             }
         }
 
-        private bool _isCreatingNewSpecCodeDefinition;
         public bool IsCreatingNewSpecCodeDefinition
         {
-            get => _isCreatingNewSpecCodeDefinition;
-            set => SetField(ref _isCreatingNewSpecCodeDefinition, value); // Changed to public setter (or just 'set')
+            get
+            {
+                bool canBeNew = !string.IsNullOrWhiteSpace(SpecCodeNo) &&
+                                !string.IsNullOrWhiteSpace(SpecCodeBit) &&
+                                (int.TryParse(SpecCodeNo, out int noVal) && noVal >= 1 && noVal <= 32) &&
+                                (int.TryParse(SpecCodeBit, out int bitVal) && bitVal >= 0 && bitVal <= 7);
+                return canBeNew && SelectedExistingSpecCodeDefinition == null;
+            }
         }
 
         private string _newSpecCodeDescription;
         public string NewSpecCodeDescription
         {
             get => _newSpecCodeDescription;
-            set => SetField(ref _newSpecCodeDescription, value);
+            set
+            {
+                if (SetField(ref _newSpecCodeDescription, value))
+                {
+                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged(); // Description affects CanSave
+                }
+            }
         }
 
         public ObservableCollection<string> AvailableCategories { get; }
@@ -99,7 +112,13 @@ namespace RuleArchitectPrototype.ViewModels
         public string SelectedNewSpecCodeCategory
         {
             get => _selectedNewSpecCodeCategory;
-            set => SetField(ref _selectedNewSpecCodeCategory, value);
+            set
+            {
+                if (SetField(ref _selectedNewSpecCodeCategory, value))
+                {
+                    (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged(); // Category affects CanSave
+                }
+            }
         }
 
         public ObservableCollection<SoftwareOptionActivationRule> AvailableActivationRules { get; }
@@ -123,6 +142,7 @@ namespace RuleArchitectPrototype.ViewModels
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
+
         public AddEditSpecCodeDialogViewModel(
             MachineType currentMachineType,
             ObservableCollection<SpecCodeDefinition> allGlobalSpecCodeDefinitions,
@@ -131,7 +151,7 @@ namespace RuleArchitectPrototype.ViewModels
             SoftwareOptionSpecificationCode existingSosCodeToEdit = null)
         {
             _parentTabbedViewModel = parentTabbedViewModel;
-            _allGlobalSpecCodeDefinitions = allGlobalSpecCodeDefinitions;
+            _allGlobalSpecCodeDefinitions = allGlobalSpecCodeDefinitions ?? new ObservableCollection<SpecCodeDefinition>();
 
             CurrentSoftwareOptionMachineType = currentMachineType;
             AvailableActivationRules = new ObservableCollection<SoftwareOptionActivationRule>(availableParentActivationRules ?? new ObservableCollection<SoftwareOptionActivationRule>());
@@ -143,24 +163,23 @@ namespace RuleArchitectPrototype.ViewModels
 
 
             SaveCommand = new RelayCommand(PerformSave, CanPerformSave);
-            CancelCommand = new RelayCommand(PerformCancel);
+            CancelCommand = new RelayCommand(PerformCancel); // No CanExecute delegate, so should always be enabled
 
             if (existingSosCodeToEdit != null)
             {
-                SpecCodeNo = existingSosCodeToEdit.SpecCodeDefinition?.SpecCodeNo;
-                SpecCodeBit = existingSosCodeToEdit.SpecCodeDefinition?.SpecCodeBit;
-                // LoadExistingSpecCodeDefinition will be called by setters of No/Bit.
-                // If it finds the existing one, SelectedExistingSpecCodeDefinition will be set,
-                // which in turn sets IsCreatingNewSpecCodeDefinition to false and populates description/category.
-                if (existingSosCodeToEdit.SpecCodeDefinition != null && SelectedExistingSpecCodeDefinition == null)
+                // Set backing fields directly first to avoid premature LoadExistingSpecCodeDefinition calls
+                _specCodeNo = existingSosCodeToEdit.SpecCodeDefinition?.SpecCodeNo;
+                _specCodeBit = existingSosCodeToEdit.SpecCodeDefinition?.SpecCodeBit;
+                OnPropertyChanged(nameof(SpecCodeNo));
+                OnPropertyChanged(nameof(SpecCodeBit));
+
+                LoadExistingSpecCodeDefinition(); // Now call it
+
+                if (SelectedExistingSpecCodeDefinition == null && existingSosCodeToEdit.SpecCodeDefinition != null)
                 {
-                    // If LoadExistingSpecCodeDefinition didn't immediately find it (e.g. due to timing or slight mismatch not caught by Find)
-                    // ensure fields are populated from the item being edited.
                     NewSpecCodeDescription = existingSosCodeToEdit.SpecCodeDefinition.Description;
                     SelectedNewSpecCodeCategory = existingSosCodeToEdit.SpecCodeDefinition.Category;
-                    IsCreatingNewSpecCodeDefinition = false; // Explicitly set if we are editing an existing one
                 }
-
 
                 SelectedActivationRule = existingSosCodeToEdit.SoftwareOptionActivationRuleId.HasValue
                     ? AvailableActivationRules.FirstOrDefault(ar => ar.SoftwareOptionActivationRuleId == existingSosCodeToEdit.SoftwareOptionActivationRuleId.Value)
@@ -170,41 +189,45 @@ namespace RuleArchitectPrototype.ViewModels
             else
             {
                 SelectedActivationRule = AvailableActivationRules.FirstOrDefault(ar => ar.SoftwareOptionActivationRuleId == 0);
-                LoadExistingSpecCodeDefinition(); // Initial check in case No/Bit are pre-filled for a new item somehow
+                LoadExistingSpecCodeDefinition();
             }
+            OnPropertyChanged(nameof(IsCreatingNewSpecCodeDefinition));
+            (SaveCommand as RelayCommand)?.RaiseCanExecuteChanged(); // Initial check for SaveCommand
         }
 
         private void LoadExistingSpecCodeDefinition()
         {
-            if (string.IsNullOrWhiteSpace(SpecCodeNo) || string.IsNullOrWhiteSpace(SpecCodeBit) || CurrentSoftwareOptionMachineType == null)
+            if (string.IsNullOrWhiteSpace(_specCodeNo) || string.IsNullOrWhiteSpace(_specCodeBit) || CurrentSoftwareOptionMachineType == null)
             {
-                SelectedExistingSpecCodeDefinition = null; // This will trigger its setter logic
+                SelectedExistingSpecCodeDefinition = null;
                 return;
             }
 
-            if (!int.TryParse(SpecCodeNo, out int noVal) || noVal < 1 || noVal > 32)
+            if (!int.TryParse(_specCodeNo, out int noVal) || noVal < 1 || noVal > 32)
             {
-                SelectedExistingSpecCodeDefinition = null; // This will trigger its setter logic
+                SelectedExistingSpecCodeDefinition = null;
                 return;
             }
-            if (!int.TryParse(SpecCodeBit, out int bitVal) || bitVal < 0 || bitVal > 7)
+            if (!int.TryParse(_specCodeBit, out int bitVal) || bitVal < 0 || bitVal > 7)
             {
-                SelectedExistingSpecCodeDefinition = null; // This will trigger its setter logic
+                SelectedExistingSpecCodeDefinition = null;
                 return;
             }
 
             SelectedExistingSpecCodeDefinition = _allGlobalSpecCodeDefinitions.FirstOrDefault(sd =>
-                sd.SpecCodeNo == SpecCodeNo &&
-                sd.SpecCodeBit == SpecCodeBit &&
+                sd.SpecCodeNo == _specCodeNo &&
+                sd.SpecCodeBit == _specCodeBit &&
                 sd.MachineTypeId == CurrentSoftwareOptionMachineType.MachineTypeId);
         }
 
         private bool CanPerformSave()
         {
+            // No and Bit must be present and within range
             if (string.IsNullOrWhiteSpace(SpecCodeNo) || string.IsNullOrWhiteSpace(SpecCodeBit)) return false;
             if (!int.TryParse(SpecCodeNo, out int noVal) || noVal < 1 || noVal > 32) return false;
             if (!int.TryParse(SpecCodeBit, out int bitVal) || bitVal < 0 || bitVal > 7) return false;
 
+            // If creating new, Description and Category must be selected
             if (IsCreatingNewSpecCodeDefinition)
             {
                 if (string.IsNullOrWhiteSpace(NewSpecCodeDescription) || string.IsNullOrWhiteSpace(SelectedNewSpecCodeCategory))
@@ -217,36 +240,55 @@ namespace RuleArchitectPrototype.ViewModels
 
         private void PerformSave()
         {
-            if (!CanPerformSave()) return;
-
-            if (IsCreatingNewSpecCodeDefinition)
+            if (!CanPerformSave())
             {
-                ResultSpecCodeDefinition = new SpecCodeDefinition
+                MessageBox.Show("Cannot save. Please ensure all required fields are filled correctly.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                if (IsCreatingNewSpecCodeDefinition)
                 {
-                    SpecCodeDefinitionId = 0,
-                    SpecCodeNo = SpecCodeNo,
-                    SpecCodeBit = SpecCodeBit,
-                    Description = NewSpecCodeDescription,
-                    Category = SelectedNewSpecCodeCategory,
-                    MachineTypeId = CurrentSoftwareOptionMachineType.MachineTypeId,
-                    MachineType = CurrentSoftwareOptionMachineType
-                };
+                    ResultSpecCodeDefinition = new SpecCodeDefinition
+                    {
+                        SpecCodeDefinitionId = 0,
+                        SpecCodeNo = SpecCodeNo,
+                        SpecCodeBit = SpecCodeBit,
+                        Description = NewSpecCodeDescription,
+                        Category = SelectedNewSpecCodeCategory,
+                        MachineTypeId = CurrentSoftwareOptionMachineType.MachineTypeId,
+                        MachineType = CurrentSoftwareOptionMachineType
+                    };
+                }
+                else
+                {
+                    ResultSpecCodeDefinition = SelectedExistingSpecCodeDefinition;
+                }
+
+                ResultSoftwareOptionActivationRuleId = (SelectedActivationRule != null && SelectedActivationRule.SoftwareOptionActivationRuleId != 0)
+                    ? SelectedActivationRule.SoftwareOptionActivationRuleId
+                    : (int?)null;
+
+                OnRequestCloseDialog(true);
             }
-            else
+            catch (Exception ex)
             {
-                ResultSpecCodeDefinition = SelectedExistingSpecCodeDefinition;
+                MessageBox.Show($"An error occurred during save: {ex.Message}", "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Optionally, re-throw or log more details
             }
-
-            ResultSoftwareOptionActivationRuleId = (SelectedActivationRule != null && SelectedActivationRule.SoftwareOptionActivationRuleId != 0)
-                ? SelectedActivationRule.SoftwareOptionActivationRuleId
-                : (int?)null;
-
-            OnRequestCloseDialog(true);
         }
 
         private void PerformCancel()
         {
-            OnRequestCloseDialog(false);
+            try
+            {
+                OnRequestCloseDialog(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during cancel: {ex.Message}", "Cancel Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public event Action<bool?> RequestCloseDialog;

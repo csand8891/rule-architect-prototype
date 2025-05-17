@@ -13,8 +13,7 @@
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterOwner"
         FocusManager.FocusedElement="{Binding ElementName=SpecNoTextBox}"
-        Width="450" MaxWidth="600" MinHeight="450" MaxHeight="700" ShowInTaskbar="False">
-
+        Width="450" MaxWidth="600" MinHeight="480" MaxHeight="700" ShowInTaskbar="False">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,6 +24,7 @@
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
             <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -36,6 +36,7 @@
 
     <Grid Margin="16">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -58,34 +59,36 @@
             <TextBox x:Name="SpecNoTextBox" Grid.Column="0"
                      materialDesign:HintAssist.Hint="Spec No. (1-32)"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Text="{Binding SpecCodeNo, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, NotifyOnValidationError=True}"
+                     Text="{Binding SpecCodeNo, UpdateSourceTrigger=PropertyChanged}"
                      Margin="0,0,8,0"/>
             <TextBlock Grid.Column="1" Text="-" VerticalAlignment="Center" Margin="0,10,8,0" FontSize="16"/>
             <TextBox Grid.Column="2"
                      materialDesign:HintAssist.Hint="Bit (0-7)"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Text="{Binding SpecCodeBit, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, NotifyOnValidationError=True}"
+                     Text="{Binding SpecCodeBit, UpdateSourceTrigger=PropertyChanged}"
                      Margin="0,0,0,0"/>
         </Grid>
 
-        <GroupBox Grid.Row="2" Header="Specification Code Definition" Margin="0,5,0,10"
-                  Visibility="{Binding SpecCodeNo, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=NotEmpty}">
+        <Button Grid.Row="2" Content="Manually Check/Update Definition State" 
+                Command="{Binding ManualUpdateButtonCommand}" 
+                Margin="0,5,0,5" HorizontalAlignment="Left"
+                Style="{StaticResource MaterialDesignOutlinedButton}"/>
+
+        <GroupBox Grid.Row="3" Header="Specification Code Definition" Margin="0,5,0,10"
+                  Visibility="{Binding IsSpecCodeNoEntered, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
             <StackPanel Margin="10">
-                <TextBlock Margin="0,0,0,5">
-                    <Run Text="Status: "/>
-                    <Run FontWeight="Bold">
-                        <Run.Text>
-                            <Binding Path="IsCreatingNewSpecCodeDefinition" 
-                                     Converter="{StaticResource NullToValueConverter}"
-                                     ConverterParameter="Creating New Definition/Existing Definition Found"/>
-                            </Run.Text>
-                    </Run>
-                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Status: "/>
+                    <TextBlock Text="Creating New Definition" FontWeight="Bold"
+                                 Visibility="{Binding IsCreatingNewSpecCodeDefinition, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"/>
+                    <TextBlock Text="Existing Definition Found" FontWeight="Bold"
+                                 Visibility="{Binding IsCreatingNewSpecCodeDefinition, Converter={StaticResource InverseBooleanToVisibilityConverter}, Mode=OneWay}"/>
+                </StackPanel>
 
                 <TextBox materialDesign:HintAssist.Hint="Description"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Text="{Binding NewSpecCodeDescription, UpdateSourceTrigger=PropertyChanged}"
-                         IsEnabled="{Binding IsCreatingNewSpecCodeDefinition}"
+                         IsEnabled="{Binding IsCreatingNewSpecCodeDefinition, Mode=OneWay}"
                          TextWrapping="Wrap" MinLines="2" MaxLines="3" VerticalScrollBarVisibility="Auto"
                          Margin="0,8,0,8"/>
 
@@ -93,12 +96,12 @@
                           ItemsSource="{Binding AvailableCategories}"
                           SelectedItem="{Binding SelectedNewSpecCodeCategory, UpdateSourceTrigger=PropertyChanged}"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          IsEnabled="{Binding IsCreatingNewSpecCodeDefinition}"
+                          IsEnabled="{Binding IsCreatingNewSpecCodeDefinition, Mode=OneWay}"
                           Margin="0,8,0,0"/>
             </StackPanel>
         </GroupBox>
 
-        <ComboBox Grid.Row="3" materialDesign:HintAssist.Hint="Link to Activation Rule (Optional)"
+        <ComboBox Grid.Row="4" materialDesign:HintAssist.Hint="Link to Activation Rule (Optional)"
                   ItemsSource="{Binding AvailableActivationRules}"
                   SelectedItem="{Binding SelectedActivationRule, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="RuleName" 
@@ -106,13 +109,13 @@
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   Margin="0,5,0,10"/>
 
-        <TextBox Grid.Row="4" materialDesign:HintAssist.Hint="Specific Interpretation for this Software Option"
+        <TextBox Grid.Row="5" materialDesign:HintAssist.Hint="Specific Interpretation for this Software Option"
                  Text="{Binding SpecificInterpretation, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="5"
                  VerticalScrollBarVisibility="Auto" Margin="0,5,0,10"/>
 
-        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
             <Button Content="Cancel" Command="{Binding CancelCommand}" IsCancel="True"
                     Style="{StaticResource MaterialDesignOutlinedButton}" Margin="0,0,8,0"/>
             <Button Content="Save" Command="{Binding SaveCommand}" IsDefault="True"

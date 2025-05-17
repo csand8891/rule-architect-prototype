@@ -58,6 +58,14 @@
                             Visibility="{Binding SearchText, Converter={StaticResource StringToVisibilityConverter}}">
                         <materialDesign:PackIcon Kind="FilterRemoveOutline" />
                     </Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                             ToolTip="Toggle Search Bar"
+                             Command="{Binding ToggleSearchBarVisibilityCommand}"
+                             Margin="0,0,8,0">
+                        <materialDesign:PackIcon Kind="MagnifyScan" />
+                    </Button>
+                        
+                    
                 </StackPanel>
 
                 <TextBox Grid.Row="1"
@@ -65,7 +73,8 @@
                          Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Margin="0,0,0,8"
-                         materialDesign:TextFieldAssist.HasClearButton="True"/>
+                         materialDesign:TextFieldAssist.HasClearButton="True"
+                         Visibility="{Binding IsSearchBarVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                 <DataGrid Grid.Row="2"
                           ItemsSource="{Binding RulesheetsView}" SelectedItem="{Binding SelectedRulesheet}"
@@ -76,9 +85,9 @@
                           materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                           materialDesign:DataGridAssist.ColumnHeaderPadding="8">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Primary Name" Binding="{Binding PrimaryName}" Width="*"/>
+                        <DataGridTextColumn Header="Option Name" Binding="{Binding PrimaryName}" Width="*"/>
                         <DataGridTextColumn Header="Option Number" Binding="{Binding PrimaryOptionNumberDisplay}" Width="Auto"/>
-                        <DataGridTextColumn Header="Control System" Binding="{Binding ControlSystem.Name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Control Type" Binding="{Binding ControlSystem.Name}" Width="Auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

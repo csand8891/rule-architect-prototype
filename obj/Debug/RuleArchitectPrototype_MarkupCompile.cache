@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\corey\dev\rule-architect-prototype\obj\Debug\
+C:\Users\corey\software_dev\work\rule-architect-prototype\RuleArchitectPrototype\obj\Debug\
 RuleArchitectPrototype
 none
 false
 DEBUG;TRACE
-C:\Users\corey\dev\rule-architect-prototype\App.xaml
+C:\Users\corey\software_dev\work\rule-architect-prototype\RuleArchitectPrototype\App.xaml
 4-483463389
 
-331027691609
+33-480593095
 16286497779
 MainWindow.xaml;TabbedRulesheetView.xaml;Views\AddEditSpecCodeDialogView.xaml;Views\RulesheetDetailTabView.xaml;
 

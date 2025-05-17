@@ -344,14 +344,13 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj",
+      "projectUniqueName": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj",
       "projectName": "RuleArchitectPrototype",
-      "projectPath": "C:\\Users\\corey\\dev\\rule-architect-prototype\\RuleArchitectPrototype.csproj",
+      "projectPath": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\RuleArchitectPrototype.csproj",
       "packagesPath": "C:\\Users\\corey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\corey\\dev\\rule-architect-prototype\\obj\\",
+      "outputPath": "C:\\Users\\corey\\software_dev\\work\\rule-architect-prototype\\RuleArchitectPrototype\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "UsingMicrosoftNETSdk": false,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],

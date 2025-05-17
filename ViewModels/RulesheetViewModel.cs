@@ -8,6 +8,7 @@ using System.Windows.Input;
 using RuleArchitectPrototype.Models;
 using RuleArchitectPrototype.Commands;
 using System.Collections.Generic;
+using MaterialDesignThemes.Wpf;
 
 namespace RuleArchitectPrototype.ViewModels
 {
@@ -66,6 +67,21 @@ namespace RuleArchitectPrototype.ViewModels
             set => SetField(ref _statusMessage, value);
         }
 
+        private bool _isSearchBarVisible = true; //Default to true
+        public bool IsSearchBarVisible
+        {
+            get => _isSearchBarVisible;
+            set
+            {
+                if (SetField(ref _isSearchBarVisible, value))
+                {
+                    OnPropertyChanged(nameof(ToggleSearchIconKind));
+                }
+            }
+        }
+
+        public ICommand ToggleSearchBarVisibilityCommand;
+
         private string _searchText;
         public string SearchText
         {
@@ -81,6 +97,8 @@ namespace RuleArchitectPrototype.ViewModels
             }
         }
 
+        public PackIconKind ToggleSearchIconKind => IsSearchBarVisible ? PackIconKind.MagnifyMinusOutline : PackIconKind.MagnifyPlusOutline;
+
         public ICommand AddNewCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand SaveCommand { get; }
@@ -93,6 +111,10 @@ namespace RuleArchitectPrototype.ViewModels
         public ObservableCollection<SpecCodeDefinition> AllSpecCodeDefinitions { get; set; }
         public ObservableCollection<SoftwareOptionActivationRule> AllActivationRules { get; set; }
 
+        private void ExecuteToggleSearchBarVisibility()
+        {
+            IsSearchBarVisible = !IsSearchBarVisible;
+        }
 
         public RulesheetViewModel()
         {
@@ -115,6 +137,7 @@ namespace RuleArchitectPrototype.ViewModels
             CancelCommand = new RelayCommand(CancelEdit, CanCancelEdit);
             DeleteCommand = new RelayCommand(DeleteRulesheet, CanDeleteRulesheet);
             ClearFilterCommand = new RelayCommand(ClearFilter, CanClearFilter);
+            ToggleSearchBarVisibilityCommand = new RelayCommand(ExecuteToggleSearchBarVisibility);
         }
 
         private void LoadMasterData()
@@ -354,6 +377,25 @@ namespace RuleArchitectPrototype.ViewModels
             dynamicFixtureOption.ActivationRules.Add(activationRuleDf1);
             dynamicFixtureOption.SpecificationCodes.Add(new SoftwareOptionSpecificationCode { SoftwareOptionSpecificationCodeId = nextSoftwareOptionIdCounter++, SpecCodeDefinition = specDefDf1, SoftwareOptionActivationRuleId = activationRuleDf1.SoftwareOptionActivationRuleId, ActivationRule = activationRuleDf1 });
             Rulesheets.Add(dynamicFixtureOption);
+
+            var autoDoorOption = new SoftwareOption
+            {
+                SoftwareOptionId = nextSoftwareOptionIdCounter++,
+                PrimaryName = "Auto Door with Dual Cycle Start",
+                SourceFileName = "Auto Door W Dual Cycle Start.csv",
+                ControlSystemId = csP300L?.ControlSystemId,
+                ControlSystem = csP300L,
+                CheckedBy = "Auto",
+                CheckedDate = DateTime.Now
+            };
+            var specDefAd1 = GetOrCreateSpecCodeDefinition(nextSpecDefId++, "15", "4", "OP.DOOR AUTO", "PLC1", mtLathe);
+            var specDefAd2 = GetOrCreateSpecCodeDefinition(nextSpecDefId++, "12", "4", "DUAL PALM START", "PLC1", mtLathe);
+            var activationRuleAd1 = GetOrCreateActivationRule(nextActivationRuleId++, "Front Door Auto", "1=ON");
+            var activationRuleAd2 = GetOrCreateActivationRule(nextActivationRuleId++, "Dual Palm & Door Close", "1=ON");
+            autoDoorOption.ActivationRules.Add(activationRuleAd1);
+            autoDoorOption.SpecificationCodes.Add(new SoftwareOptionSpecificationCode { SoftwareOptionSpecificationCodeId = nextSoftwareOptionIdCounter++, SpecCodeDefinition = specDefAd1, SoftwareOptionActivationRuleId = activationRuleAd1.SoftwareOptionActivationRuleId, ActivationRule = activationRuleAd1 });
+            autoDoorOption.SpecificationCodes.Add(new SoftwareOptionSpecificationCode { SoftwareOptionSpecificationCodeId = nextSoftwareOptionIdCounter++, SpecCodeDefinition = specDefAd2, SoftwareOptionActivationRuleId = activationRuleAd2.SoftwareOptionActivationRuleId, ActivationRule = activationRuleAd1 });
+            Rulesheets.Add(autoDoorOption);
         }
 
 

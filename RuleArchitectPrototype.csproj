@@ -77,7 +77,7 @@
     <Compile Include="TabbedRulesheetView.xaml.cs">
       <DependentUpon>TabbedRulesheetView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AddEditSpecCodeDialgoViewModel.cs" />
+    <Compile Include="ViewModels\AddEditSpecCodeDialogViewModel.cs" />
     <Compile Include="ViewModels\RulesheetDetailTabViewModel.cs" />
     <Compile Include="ViewModels\RulesheetViewModel.cs" />
     <Compile Include="ViewModels\TabbedRulesheetViewModel.cs" />
